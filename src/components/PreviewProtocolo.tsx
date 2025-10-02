@@ -61,9 +61,10 @@ export const PreviewProtocolo = ({ protocolo }: PreviewProtocoloProps) => {
         <table className="w-full border-collapse border border-foreground/30 text-sm">
           <thead>
             <tr className="bg-secondary">
-              <th className="border border-foreground/30 px-3 py-2 text-left font-semibold">Código</th>
+              <th className="border border-foreground/30 px-3 py-2 text-left font-semibold w-20">Código</th>
               <th className="border border-foreground/30 px-3 py-2 text-left font-semibold">Documento(s)</th>
-              <th className="border border-foreground/30 px-3 py-2 text-left font-semibold">Vencimento</th>
+              <th className="border border-foreground/30 px-3 py-2 text-left font-semibold w-24">Vencimento</th>
+              <th className="border border-foreground/30 px-3 py-2 text-left font-semibold w-28">Valor</th>
               <th className="border border-foreground/30 px-3 py-2 text-left font-semibold">Observação</th>
             </tr>
           </thead>
@@ -78,16 +79,19 @@ export const PreviewProtocolo = ({ protocolo }: PreviewProtocoloProps) => {
                     {doc.nome}
                   </td>
                   <td className="border border-foreground/30 px-3 py-2">
-                    {doc.vencimento ? format(new Date(doc.vencimento), "dd/MM/yyyy") : "-"}
+                    {doc.vencimento ? format(new Date(doc.vencimento), "dd/MM/yyyy") : ""}
                   </td>
                   <td className="border border-foreground/30 px-3 py-2">
-                    {doc.valor ? `Valor: ${doc.valor}` : ""}
+                    {doc.valor || ""}
+                  </td>
+                  <td className="border border-foreground/30 px-3 py-2">
+                    {doc.observacao || ""}
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={4} className="border border-foreground/30 px-3 py-4 text-center text-muted-foreground italic">
+                <td colSpan={5} className="border border-foreground/30 px-3 py-4 text-center text-muted-foreground italic">
                   Nenhum documento selecionado
                 </td>
               </tr>

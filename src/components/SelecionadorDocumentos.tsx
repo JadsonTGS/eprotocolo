@@ -36,6 +36,14 @@ export const SelecionadorDocumentos = ({ documentos, onChange }: SelecionadorDoc
     );
   };
 
+  const handleObservacaoChange = (id: string, observacao: string) => {
+    onChange(
+      documentos.map((doc) =>
+        doc.id === id ? { ...doc, observacao } : doc
+      )
+    );
+  };
+
   const adicionarDocumento = () => {
     const novoDoc: Documento = {
       id: Date.now().toString(),
@@ -97,27 +105,40 @@ export const SelecionadorDocumentos = ({ documentos, onChange }: SelecionadorDoc
                 </div>
                 
                 {doc.selecionado && (
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="space-y-2">
-                      <Label htmlFor={`valor-${doc.id}`} className="text-sm text-muted-foreground">
-                        Valor (opcional)
-                      </Label>
-                      <Input
-                        id={`valor-${doc.id}`}
-                        value={doc.valor || ""}
-                        onChange={(e) => handleValorChange(doc.id, e.target.value)}
-                        placeholder="R$ 0,00"
-                      />
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-2">
+                        <Label htmlFor={`valor-${doc.id}`} className="text-sm text-muted-foreground">
+                          Valor (opcional)
+                        </Label>
+                        <Input
+                          id={`valor-${doc.id}`}
+                          value={doc.valor || ""}
+                          onChange={(e) => handleValorChange(doc.id, e.target.value)}
+                          placeholder="R$ 0,00"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor={`vencimento-${doc.id}`} className="text-sm text-muted-foreground">
+                          Vencimento (opcional)
+                        </Label>
+                        <Input
+                          id={`vencimento-${doc.id}`}
+                          type="date"
+                          value={doc.vencimento || ""}
+                          onChange={(e) => handleVencimentoChange(doc.id, e.target.value)}
+                        />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor={`vencimento-${doc.id}`} className="text-sm text-muted-foreground">
-                        Vencimento (opcional)
+                      <Label htmlFor={`observacao-${doc.id}`} className="text-sm text-muted-foreground">
+                        Observação (opcional)
                       </Label>
                       <Input
-                        id={`vencimento-${doc.id}`}
-                        type="date"
-                        value={doc.vencimento || ""}
-                        onChange={(e) => handleVencimentoChange(doc.id, e.target.value)}
+                        id={`observacao-${doc.id}`}
+                        value={doc.observacao || ""}
+                        onChange={(e) => handleObservacaoChange(doc.id, e.target.value)}
+                        placeholder="Ex: Pasta contendo documentos adicionais..."
                       />
                     </div>
                   </div>

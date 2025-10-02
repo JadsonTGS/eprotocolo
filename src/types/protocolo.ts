@@ -19,6 +19,7 @@ export interface Documento {
   selecionado: boolean;
   valor?: string;
   vencimento?: string;
+  observacao?: string;
 }
 
 export interface Protocolo {
