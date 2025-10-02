@@ -93,6 +93,39 @@ export const FormularioEscritorio = ({ dados, onChange }: FormularioEscritorioPr
             />
           </div>
         </div>
+
+        <div className="pt-4 border-t space-y-4">
+          <h3 className="text-sm font-semibold text-muted-foreground">Personalização do Protocolo</h3>
+          
+          <div className="space-y-2">
+            <Label htmlFor="titulo-recibo">Título do Recibo</Label>
+            <Input
+              id="titulo-recibo"
+              value={dados.tituloRecibo || ""}
+              onChange={(e) => onChange({ ...dados, tituloRecibo: e.target.value })}
+              placeholder="Recibo de Saída de Documentos"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="cor-titulo">Cor do Título</Label>
+            <div className="flex gap-2 items-center">
+              <Input
+                id="cor-titulo"
+                type="color"
+                value={dados.corTitulo || "#1e40af"}
+                onChange={(e) => onChange({ ...dados, corTitulo: e.target.value })}
+                className="w-20 h-10 cursor-pointer"
+              />
+              <Input
+                value={dados.corTitulo || "#1e40af"}
+                onChange={(e) => onChange({ ...dados, corTitulo: e.target.value })}
+                placeholder="#1e40af"
+                className="flex-1"
+              />
+            </div>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

@@ -32,8 +32,14 @@ export const PreviewProtocolo = ({ protocolo }: PreviewProtocoloProps) => {
 
       {/* Título Principal */}
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-primary border-b-2 border-primary inline-block pb-1">
-          Recibo de Saída de Documentos
+        <h1 
+          className="text-2xl font-bold inline-block pb-1"
+          style={{ 
+            color: protocolo.escritorio.corTitulo || "#1e40af",
+            borderBottom: `2px solid ${protocolo.escritorio.corTitulo || "#1e40af"}`
+          }}
+        >
+          {protocolo.escritorio.tituloRecibo || "Recibo de Saída de Documentos"}
         </h1>
       </div>
 

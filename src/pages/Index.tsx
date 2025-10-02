@@ -22,6 +22,8 @@ const Index = () => {
     cnpj: "",
     endereco: "",
     contato: "",
+    tituloRecibo: "Recibo de Saída de Documentos",
+    corTitulo: "#1e40af",
   });
 
   const [dadosEmpresa, setDadosEmpresa] = useState<DadosEmpresa>({

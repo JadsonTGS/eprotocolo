@@ -4,6 +4,8 @@ export interface DadosEscritorio {
   endereco: string;
   contato: string;
   logo?: string;
+  tituloRecibo?: string;
+  corTitulo?: string;
 }
 
 export interface DadosEmpresa {
